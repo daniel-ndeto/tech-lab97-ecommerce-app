@@ -20,7 +20,7 @@ function Home() {
   return (
     <div className="home-page">
       {products.length === 0 ? (
-        <p>Loading products...</p>
+        <p>No products available for sale right now. Updating soon.</p>
       ) : (
         <div className="product-grid">
           {products.map(product => (

@@ -1,4 +1,3 @@
-// backend/routes/payment.js
 const express = require('express');
 const router = express.Router();
 
@@ -7,7 +6,6 @@ router.post('/mpesa', async (req, res) => {
   const { amount, phone, orderId } = req.body;
   try {
     // Simulate the MPESA SDK push notification.
-    // For this demo, we simulate a push that instructs the user to insert their PIN without showing a fixed receiving number.
     const simulatedPushResponse = {
       success: true,
       message: `MPESA push initiated. Please insert your PIN on your phone to complete the transaction.`,

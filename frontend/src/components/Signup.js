@@ -9,6 +9,7 @@ function Signup() {
     password: '',
     phone: ''
   });
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const onChange = (e) =>
@@ -17,13 +18,14 @@ function Signup() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send the formData (including phone) to your registration endpoint
       const res = await axios.post('/api/auth/register', formData);
+      // Save the token to localStorage
       localStorage.setItem('token', res.data.token);
+      // Redirect to homepage (or dashboard)
       navigate('/');
     } catch (err) {
-      console.error('Error during signup:', err);
-      alert('Signup failed. Please try again.');
+      console.error("Error during signup:", err);
+      setError('Signup failed. Please try again.');
     }
   };
 
@@ -62,6 +64,7 @@ function Signup() {
         onChange={onChange}
         required
       />
+      {error && <p className="error">{error}</p>}
       <button type="submit">Sign Up</button>
     </form>
   );

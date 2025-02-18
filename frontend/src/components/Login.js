@@ -1,9 +1,10 @@
-// frontend/src/components/Login.js
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
   const onChange = (e) =>
@@ -11,17 +12,44 @@ function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    // For demo purposes, simply navigate to Home
-    navigate('/');
+    try {
+      const res = await axios.post('/api/auth/login', formData);
+      localStorage.setItem('token', res.data.token);
+      navigate('/');
+    } catch (err) {
+      console.error("Error logging in:", err);
+      setError('Invalid credentials. Please try again.');
+    }
   };
 
   return (
-    <form onSubmit={onSubmit} className="auth-form">
-      <h2>Login</h2>
-      <input type="email" name="email" placeholder="Email" value={formData.email} onChange={onChange} required />
-      <input type="password" name="password" placeholder="Password" value={formData.password} onChange={onChange} required />
-      <button type="submit">Login</button>
-    </form>
+    <div className="login-container">
+      <h2>User Login</h2>
+      <form onSubmit={onSubmit}>
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={onChange}
+            required
+          />
+        </div>
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={onChange}
+            required
+          />
+        </div>
+        {error && <p className="error">{error}</p>}
+        <button type="submit">Login</button>
+      </form>
+    </div>
   );
 }
 

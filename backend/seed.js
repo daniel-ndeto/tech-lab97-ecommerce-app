@@ -1,4 +1,3 @@
-// backend/seed.js
 require('dotenv').config();
 const mongoose = require('mongoose');
 const connectDB = require('./config/db');
@@ -6,7 +5,7 @@ const Product = require('./models/Product');
 
 const sampleProducts = [
   {
-    name: "Smartphone X",
+    name: "Smartphone vivo",
     description: "A premium smartphone with high-end features.",
     price: 799,
     rating: 4.5,
@@ -14,7 +13,7 @@ const sampleProducts = [
     category: "phones"
   },
   {
-    name: "Budget Smartphone Y",
+    name: "Budget Smartphone Google Pixels",
     description: "An affordable smartphone with all essential features.",
     price: 299,
     rating: 4.0,
