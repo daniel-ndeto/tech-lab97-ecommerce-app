@@ -154,3 +154,6 @@ This project can be extended with features like product search, order management
 
 # License
 MIT 
+![image](https://github.com/user-attachments/assets/c38c7769-a4dd-40f0-9b40-fe1b0b69ea75)
+![image](https://github.com/user-attachments/assets/e5b6ca2b-1d91-45bc-8246-5c2b9e80e145)
+
