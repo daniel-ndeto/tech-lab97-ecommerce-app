@@ -45,5 +45,112 @@ A full-stack MERN (MongoDB, Express, React, Node.js) e-commerce platform that se
 
 2. **Install dependencies:**
     ```bash
+    npm install
 
-  
+
+3. **Configure Environment Variables:**
+**Create a .env file in the backend folder with the following:
+  ```bash
+   MONGO_URI=your_mongodb_atlas_connection_string
+   PORT=5000
+   JWT_SECRET=yourSuperSecretKey
+ 
+
+ # Setup Frontend
+
+Navigate to the frontend folder:
+
+```bash
+cd ../frontend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Ensure your `package.json` includes a proxy configuration:
+
+```json
+"proxy": "http://localhost:5000"
+```
+
+Start the Frontend Development Server:
+
+```bash
+npm start
+```
+
+The app should open at [http://localhost:3000](http://localhost:3000).
+
+# Setup Admin Panel
+
+Navigate to the admin folder:
+
+```bash
+cd ../admin
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Also ensure your `package.json` includes a proxy configuration:
+
+```json
+"proxy": "http://localhost:5000"
+```
+
+Start the Admin Development Server:
+
+```bash
+npm start
+```
+
+The admin panel should open at [http://localhost:3000](http://localhost:3000) (or on the configured port).
+
+# Running the Project
+
+## Backend:
+Ensure the backend server is running on port 5000. It handles API requests, user authentication, product management, and payment processing.
+
+## Frontend:
+The frontend displays products, user login/signup, and the shopping cart by fetching data from the backend via the proxy.
+
+## Admin Panel:
+The admin panel is used for managing products (CRUD operations) and viewing summaries.
+
+# Payment Integrations (Simulated)
+
+## MPESA:
+The simulated endpoint `/api/payment/mpesa` triggers a mock MPESA push prompting the user to insert their PIN.
+
+## PayPal:
+The simulated endpoint `/api/payment/paypal` initiates a mock PayPal payment directed to `danielndeto222@gmail.com`.
+
+# Technologies & Libraries
+
+- **React** for building dynamic user interfaces.
+- **Express** for building the backend REST API.
+- **MongoDB & Mongoose** for database operations.
+- **JWT & bcryptjs** for secure authentication.
+- **Axios** for HTTP requests.
+- **Material-UI (MUI), @emotion/react, and @emotion/styled** for styling (optional).
+- **react-router-dom** for routing in both the frontend and admin panel.
+
+# Additional Notes
+
+## Deployment:
+Use `npm run build` in both the frontend and admin projects to create production builds.
+
+## Environment Variables:
+Do not commit sensitive information (e.g., `JWT_SECRET`) to your repository. Use a `.env` file for configuration.
+
+## Future Improvements:
+This project can be extended with features like product search, order management, and real payment integrations.
+
+# License
+MIT 
